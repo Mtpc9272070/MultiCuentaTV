@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="8f4044de-6e0c-49a5-a5f8-7d0617d1529f.png" type="image/png">
+    <title>Multicuenta TV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="8f4044de-6e0c-49a5-a5f8-7d0617d1529f.png" alt="Multicuenta TV">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="#funciona">¿Cómo funciona?</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Accede a miles de contenidos<br>con <span>Multicuenta TV</span></h1>
+        <a href="catalogo.html" class="btn">Ver Catálogo</a>
+    </section>
+
+    <section class="catalogo" id="catalogo">
+        <h2>Plataformas Principales</h2>
+        <div class="cards">
+            <!-- Catálogo de servicios -->
+            <div class="card">
+              <img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="Netflix">
+              <h3>Netflix Premium</h3>
+              <p>6 meses - HD/4K</p>
+              <p>$50,000</p>
+              <button class="btn agregar" data-servicio="Netflix Premium - 6 meses" data-precio="50000">Agregar al pedido</button>
+          </div>
+  
+          <!-- Disney+ -->
+          <div class="card">
+              <img src="https://img.icons8.com/?size=512&id=rrtOAHJcHL38&format=png" alt="Disney+">
+              <h3>Disney+</h3>
+              <p>1 año - Full HD</p>
+              <p>$80,000</p>
+              <button class="btn agregar" data-servicio="Disney+ - 1 año" data-precio="80000">Agregar al pedido</button>
+          </div>
+  
+          <!-- HBO Max -->
+          <div class="card">
+              <img src="https://img.icons8.com/ios_filled/512/FFFFFF/hbo-max.png" alt="HBO Max">
+              <h3>HBO Max</h3>
+              <p>6 meses - HD</p>
+              <p>$60,000</p>
+              <button class="btn agregar" data-servicio="HBO Max - 6 meses" data-precio="60000">Agregar al pedido</button>
+          </div>
+  
+          <!-- Amazon Prime Video -->
+          <div class="card">
+              <img src="https://cdn.lovesavingsgroup.com/logos/amazon-prime.png" alt="Amazon Prime Video">
+              <h3>Amazon Prime Video</h3>
+              <p>1 año - Full HD + Envíos Amazon</p>
+              <p>$90,000</p>
+              <button class="btn agregar" data-servicio="Amazon Prime Video - 1 año" data-precio="90000">Agregar al pedido</button>
+          </div>
+  
+          <!-- Star+ -->
+          <div class="card">
+              <img src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/38C8365C78E21868AF1119E600F78996BBB5AED18C9925C10E45E4F3D8561F81/compose?aspectRatio=1.78&format=webp&width=600" alt="Star+">
+              <h3>Star+</h3>
+              <p>6 meses - Deportes + Series</p>
+              <p>$60,000</p>
+              <button class="btn agregar" data-servicio="Star+ - 6 meses" data-precio="60000">Agregar al pedido</button>
+          </div>
+  
+          <!-- Paramount+ -->
+                        </div>
+        </div>
+    </section>
+
+    <!-- Pedido (lo saco fuera del catálogo para que quede mejor organizado) -->
+    <section class="pedido" id="pedido">
+        <h2>Tu Pedido (<span id="contador">0</span> servicios)</h2>
+        <ul id="lista-pedido"></ul>
+        <h3>Total: <span id="total">$0</span></h3>
+        <button id="enviar-pedido" class="btn" disabled>Hacer Pedido por WhatsApp</button>
+    </section>
+
+    <section class="funciona" id="funciona">
+        <h2>¿Cómo funciona?</h2>
+        <div class="pasos">
+            <div class="paso">
+                <h3>1. Elige tu cuenta</h3>
+                <p>Explora nuestro catálogo y selecciona tu servicio favorito.</p>
+            </div>
+            <div class="paso">
+                <h3>2. Realiza el pago</h3>
+                <p>Pagos rápidos y seguros por múltiples métodos.</p>
+            </div>
+            <div class="paso">
+                <h3>3. Recibe tus datos</h3>
+                <p>Te enviamos tu cuenta de forma inmediata.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+        <h2>Contáctanos</h2>
+        <form>
+            <input type="text" placeholder="Tu Nombre" required>
+            <input type="email" placeholder="Tu Email" required>
+            <textarea placeholder="Tu Mensaje" required></textarea>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Multicuenta TV. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script mejorado al final -->
+    <script>
+        const botonesAgregar = document.querySelectorAll('.agregar');
+        const listaPedido = document.getElementById('lista-pedido');
+        const btnEnviar = document.getElementById('enviar-pedido');
+        const contador = document.getElementById('contador');
+        const total = document.getElementById('total');
+
+        let serviciosSeleccionados = [];
+
+        botonesAgregar.forEach(boton => {
+            boton.addEventListener('click', () => {
+                const servicio = boton.getAttribute('data-servicio');
+                const precio = parseFloat(boton.getAttribute('data-precio'));
+                serviciosSeleccionados.push({ nombre: servicio, precio: precio });
+                actualizarLista();
+            });
+        });
+
+        function actualizarLista() {
+            listaPedido.innerHTML = '';
+            let sumaTotal = 0;
+            serviciosSeleccionados.forEach((servicio, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${servicio.nombre} - $${servicio.precio.toLocaleString()}
+                    <button class="btn-eliminar" onclick="eliminarServicio(${index})">❌</button>
+                `;
+                listaPedido.appendChild(li);
+                sumaTotal += servicio.precio;
+            });
+            contador.textContent = serviciosSeleccionados.length;
+            total.textContent = `$${sumaTotal.toLocaleString()}`;
+            btnEnviar.disabled = serviciosSeleccionados.length === 0;
+        }
+
+        function eliminarServicio(index) {
+            serviciosSeleccionados.splice(index, 1);
+            actualizarLista();
+        }
+
+        btnEnviar.addEventListener('click', () => {
+            if (serviciosSeleccionados.length === 0) return;
+            const numeroWhatsApp = "573206037274"; // <-- Tu número
+            let mensaje = `Hola, quiero realizar el siguiente pedido:\n\n`;
+            serviciosSeleccionados.forEach(servicio => {
+                mensaje += `- ${servicio.nombre} - $${servicio.precio.toLocaleString()}\n`;
+            });
+            mensaje += `\nTotal: $${serviciosSeleccionados.reduce((acc, servicio) => acc + servicio.precio, 0).toLocaleString()}\n\n¡Gracias!`;
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+
+</body>
+</html>
