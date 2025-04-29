@@ -9,21 +9,23 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="8f4044de-6e0c-49a5-a5f8-7d0617d1529f.png" alt="Multicuenta TV">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="#funciona">¿Cómo funciona?</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+      <div class="logo">
+          <img src="8f4044de-6e0c-49a5-a5f8-7d0617d1529f.png" alt="Multicuenta TV">
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- Icono de hamburguesa -->
+      <nav id="navMenu">
+          <ul>
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="catalogo.html">Catálogo</a></li>
+              <li><a href="#funciona">¿Cómo funciona?</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+          </ul>
+      </nav>
+  </header>
 
     <section class="hero" id="inicio">
+      
         <h1>Accede a miles de contenidos<br>con <span>Multicuenta TV</span></h1>
         <a href="catalogo.html" class="btn">Ver Catálogo</a>
     </section>
@@ -174,6 +176,26 @@
             window.open(url, '_blank');
         });
     </script>
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573205056348" 
+   class="whatsapp-float" 
+   target="_blank" 
+   title="Chatea con nosotros en WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" 
+       alt="WhatsApp" 
+       style="width: 60px; height: 60px;">
+</a>
+<script>
+function toggleMenu() {
+    var nav = document.getElementById('navMenu');
+    if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+    }
+}
+</script>
 
 </body>
 </html>
