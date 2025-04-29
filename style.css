@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #0b0b13;
+    background-color: #0d1823;
     color: #ffffff;
     line-height: 1.6;
 }
@@ -22,34 +22,40 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #111;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo img {
-    height: 100px;
+    background: #0d1823;
+    padding: 10px 20px;
+    position: relative;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-nav li {
-    margin-left: 2rem;
+nav ul li {
+    margin-left: 20px;
 }
 
-nav a {
+nav ul li a {
+    color: white;
+    text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
-nav a:hover {
-    color: #00bcd4;
+/* Estilos del ícono de hamburguesa */
+.menu-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: none; /* Oculto por defecto */
+    z-index: 10;
 }
+.logo img {
+    height: 100px;
+}
+
 
 /* HERO */
 .hero {
@@ -206,4 +212,122 @@ footer {
 
 #total {
     color: #00ff88;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float img {
+    margin-top: 5px;
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Mostrar ícono */
+    }
+
+    nav {
+        display: none; /* Ocultar menú */
+        width: 100%;
+        background:#f2f4f6;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+#navMenu {
+    display: none;
+    position: absolute; /* Cambia a absolute para posicionarlo */
+    top: 100%; /* Lo coloca justo debajo del header */
+    left: 0;
+    background-color: #0c0c0c;
+    width: 100%;
+    z-index: 5; /* Asegura que esté por encima del contenido */
+    animation: slideDown 0.3s ease forwards;
+}
+
+#navMenu.show {
+    display: flex; /* Mantiene flex para la animación, pero se comportará como bloque por el flex-direction */
+    flex-direction: column; /* Asegura que los items estén en columna */
+    align-items: stretch; /* Estira los items horizontalmente */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Para escritorio */
+}
+
+nav ul li {
+    margin-left: 20px; /* Para escritorio */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block; /* Para que ocupe todo el ancho del li en móvil */
+    padding: 15px; /* Añade padding para mejor toque en móvil */
+    text-align: center; /* Centra el texto en móvil */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Mostrar ícono */
+    }
+
+    nav {
+        display: none; /* Ocultar menú principal en layout de escritorio */
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        margin: 0; /* Elimina el margen horizontal en móvil */
+    }
+}
+
+/* Animación */
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
