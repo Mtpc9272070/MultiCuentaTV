@@ -8,7 +8,7 @@
                 body {
             font-family: sans-serif;
             margin: 0;
-            background-color: #181818;
+            background-color: #0d1823;
             color: #f0f0f0;
             display: flex;
             flex-direction: column;
@@ -26,6 +26,10 @@
             font-size: 2.5em;
             margin-bottom: 20px;
             color: #00bcd4;
+        }
+
+        .container span{
+            color: #e9f1f2;
         }
 
         p {
@@ -179,11 +183,12 @@
 
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Nuestro Catálogo</h1>
+        <h1><span>Nuestro</span>Catalogo</h1>
         <p>Explora nuestra increíble selección de contenido disponible en Multicuenta TV y arma tu pedido.</p>
-        <a href="index.html" class="btn">Regresar</a>
+        <a href="webapp.html" class="btn">Regresar</a>
     </div>
     </div>
     <section class="catalogo">
@@ -482,7 +487,47 @@
         #mostrar-pedido-btn:hover {
             background-color: #00acc1;
         }
+        .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float img {
+    margin-top: 5px;
+}
+/* Animación de pulso */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
     </style>
+<a href="https://wa.me/573205056348" 
+class="whatsapp-float" 
+target="_blank" 
+title="Chatea con nosotros en WhatsApp">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" 
+    alt="WhatsApp" 
+    style="width: 60px; height: 60px;">
+</a>
 
     <script>
         const pedidoFlotante = document.getElementById('pedido-flotante');
@@ -558,6 +603,7 @@
 
         // Ocultar el pedido flotante inicialmente
         pedidoFlotante.classList.add('oculto');
+        
     </script>
     </body>
 </html>
