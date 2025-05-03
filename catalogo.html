@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestro Catálogo - Multicuenta TV</title>
     <style>
-                body {
+        body {
             font-family: sans-serif;
             margin: 0;
             background-color: #0d1823;
@@ -13,6 +13,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* Imagen de fondo */
+            background-image: url('img2.jpg'); /* Reemplaza con la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* Animación */
+            animation: zoomFondo 20s infinite alternate-reverse;
+        }
+
+        @keyframes zoomFondo {
+            0% {
+                background-size: 100%;
+            }
+            100% {
+                background-size: 110%;
+            }
         }
 
         .container {
@@ -20,6 +36,9 @@
             padding: 20px;
             width: 90%;
             max-width: 1200px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el contenido */
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
         h1 {
@@ -51,13 +70,120 @@
             color: #fff;
         }
 
-        .catalogo {
-            padding: 4rem 2rem;
-            text-align: center;
-            width: 100%;
+        /* Nuevos estilos para la barra lateral y el contenedor principal */
+        .contenedor-principal {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
             box-sizing: border-box;
         }
 
+        .barra-lateral {
+            width: 250px;
+            background-color: rgba(28, 28, 40, 0.9); /* Fondo semi-transparente para la barra lateral */
+            border-radius: 15px;
+            padding: 20px;
+            margin-right: 20px;
+            box-sizing: border-box;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .barra-lateral h3 {
+            color: #00bcd4;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .barra-lateral input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333546;
+            color: #f0f0f0;
+            box-sizing: border-box;
+        }
+
+        .barra-lateral button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00bcd4;
+            color: #0b0b13;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        .barra-lateral button:hover {
+            background-color: #0097a7;
+        }
+
+        .barra-lateral .filtrar-precio {
+            margin-bottom: 20px;
+        }
+
+        .barra-lateral .filtrar-precio label {
+            display: block;
+            margin-bottom: 5px;
+            color: #9e9e9e;
+            font-size: 0.9em;
+        }
+
+        .barra-lateral .filtrar-precio input[type="range"] {
+            width: 100%;
+        }
+
+        .barra-lateral .categorias ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .barra-lateral .categorias ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .barra-lateral .categorias ul li:last-child {
+            border-bottom: none;
+        }
+
+        .barra-lateral .categorias ul li a {
+            color: #9e9e9e;
+            text-decoration: none;
+            font-size: 0.95em;
+            display: block;
+        }
+
+        .barra-lateral .categorias ul li a:hover {
+            color: #fff;
+        }
+
+        .catalogo h2 {
+            color: #00bcd4;
+            margin-bottom: 20px;
+        }
+
+        .catalogo .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .catalogo {
+            flex-grow: 1;
+            flex-basis: 70%;
+            padding: 2rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -66,7 +192,7 @@
         }
 
         .card {
-            background-color: #1c1c28;
+            background-color: rgba(28, 28, 40, 0.9); /* Fondo semi-transparente para las tarjetas */
             padding: 2rem;
             border-radius: 15px;
             transition: transform 0.3s;
@@ -84,6 +210,35 @@
             height: 80px;
             margin-bottom: 1rem;
         }
+        @media (max-width: 768px) {
+            .catalogo .cards {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .barra-lateral {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+                position: static;
+            }
+
+            .contenedor-principal {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .catalogo {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .catalogo .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
 
         .btn {
             background-color: #00bcd4;
@@ -185,184 +340,220 @@
 </head>
 
 <body>
+
     <div class="container">
-        <h1><span>Nuestro</span>Catalogo</h1>
+        <h1><span>Nuestro</span>Catálogo</h1>
         <p>Explora nuestra increíble selección de contenido disponible en Multicuenta TV y arma tu pedido.</p>
-        <a href="index.html" class="btn">Regresar</a>
+        <a href="webapp.html" class="btn">Regresar</a>
     </div>
-    </div>
+
+    <div class="contenedor-principal">
+        <aside class="barra-lateral">
+            <h3>Filtrar y Buscar</h3>
+
+            <div class="filtro-grupo">
+                <h4>Buscar por Producto</h4>
+                <input type="text" id="buscar-producto" placeholder="Buscar productos...">
+                <button onclick="filtrarCatalogo()">Buscar</button>
+            </div>
+
+            <div class="filtro-grupo">
+                <h4>Filtrar por Precio</h4>
+                <div class="filtrar-precio">
+                    <label for="precio-min">Precio Mín:</label>
+                    <input type="range" id="precio-min" name="precio-min" min="0" max="150000" value="0" oninput="actualizarRangoPrecio()">
+                    <label for="precio-max">Precio Máx:</label>
+                    <input type="range" id="precio-max" name="precio-max" min="0" max="150000" value="150000" oninput="actualizarRangoPrecio()">
+                    <p>Rango: $<span id="precio-min-val">0</span> - $<span id="precio-max-val">150,000</span></p>
+                </div>
+            </div>
+
+            <div class="filtro-grupo">
+                <h4>Por Categorías</h4>
+                <div class="categorias">
+                    <ul>
+                        <li><label><input type="checkbox" name="categoria" value="Todas" onchange="filtrarCatalogo()"> Todas las Cuentas</label></li>
+                        <li><label><input type="checkbox" name="categoria" value="Streaming de Video" onchange="filtrarCatalogo()"> Streaming de Video</label></li>
+                        <li><label><input type="checkbox" name="categoria" value="Streaming de Música" onchange="filtrarCatalogo()"> Streaming de Música</label></li>
+                        <li><label><input type="checkbox" name="categoria" value="Herramientas Premium" onchange="filtrarCatalogo()"> Herramientas Premium</label></li>
+                        <li><label><input type="checkbox" name="categoria" value="VPN" onchange="filtrarCatalogo()"> VPN</label></li>
+                        <li><label><input type="checkbox" name="categoria" value="Inteligencia Artificial" onchange="filtrarCatalogo()"> Inteligencia Artificial</label></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
     <section class="catalogo">
-        <h2>Catálogo de Cuentas</h2>
-        <div class="cards">
-            <div class="card">
+        <h2>Catálogo de Cuentas</h2>        <div class="cards" data-categoria="streaming de video">
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="Netflix">
                 <h3>Netflix Premium</h3>
                 <p>6 meses - HD/4K</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="Netflix Premium - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://img.icons8.com/?size=512&id=rrtOAHJcHL38&format=png" alt="Disney+">
                 <h3>Disney+</h3>
                 <p>1 año - Full HD</p>
                 <p>$80,000</p>
                 <button class="btn agregar-pedido" data-servicio="Disney+ - 1 año" data-precio="80000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://img.icons8.com/ios_filled/512/FFFFFF/hbo-max.png" alt="HBO Max">
                 <h3>HBO Max</h3>
                 <p>6 meses - HD</p>
                 <p>$60,000</p>
                 <button class="btn agregar-pedido" data-servicio="HBO Max - 6 meses" data-precio="60000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://cdn.lovesavingsgroup.com/logos/amazon-prime.png" alt="Amazon Prime Video">
                 <h3>Amazon Prime Video</h3>
                 <p>1 año - Full HD + Envíos Amazon</p>
                 <p>$90,000</p>
                 <button class="btn agregar-pedido" data-servicio="Amazon Prime Video - 1 año" data-precio="90000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/38C8365C78E21868AF1119E600F78996BBB5AED18C9925C10E45E4F3D8561F81/compose?aspectRatio=1.78&format=webp&width=600" alt="Star+">
                 <h3>Star+</h3>
                 <p>6 meses - Deportes + Series</p>
                 <p>$60,000</p>
                 <button class="btn agregar-pedido" data-servicio="Star+ - 6 meses" data-precio="60000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://static.cdnlogo.com/logos/p/90/paramount-thumb.png" alt="Paramount+">
                 <h3>Paramount+</h3>
                 <p>6 meses - Películas y Series</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="Paramount+ - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://logodownload.org/wp-content/uploads/2023/05/apple-tv-logo.png" alt="Apple TV+">
                 <h3>Apple TV+</h3>
                 <p>6 meses - Producciones exclusivas</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="Apple TV+ - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://cdn.quicksell.co/-M5mfJ9Y8f2UdhwcIe3E/products/-NVjlQC0yRVBz3v4kFjX.jpg" alt="Crunchyroll">
                 <h3>Crunchyroll</h3>
                 <p>6 meses - Anime Premium</p>
                 <p>$45,000</p>
                 <button class="btn agregar-pedido" data-servicio="Crunchyroll - 6 meses" data-precio="45000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://greenhouse.hulu.com/app/uploads/sites/12/2023/10/logo-gradient-3up.svg" alt="Hulu">
                 <h3>Hulu</h3>
                 <p>6 meses - Series USA</p>
                 <p>$70,000</p>
                 <button class="btn agregar-pedido" data-servicio="Hulu - 6 meses" data-precio="70000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://eldiario.com/wp-content/uploads/2024/04/image-34-1200x800.png" alt="Pluto TV">
                 <h3>Pluto TV</h3>
                 <p>Acceso gratuito - Opcional Plus</p>
                 <p>$0 o $30,000</p>
                 <button class="btn agregar-pedido" data-servicio="Pluto TV - Opcional Plus" data-precio="30000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://www.laneros.com/attachments/new-youtube-premium-features-1280-6d58ec9cf9-1250513801-png-jpg.601168/" alt="YouTube Premium">
                 <h3>YouTube Premium</h3>
                 <p>6 meses - Sin anuncios</p>
                 <p>$70,000</p>
                 <button class="btn agregar-pedido" data-servicio="YouTube Premium - 6 meses" data-precio="70000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de video">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1g_loLH8yU2-7kvjwSj5yFeZchpntGCZmkw&s" alt="Vix+">
                 <h3>Vix+</h3>
                 <p>6 meses - Series en español</p>
                 <p>$40,000</p>
                 <button class="btn agregar-pedido" data-servicio="Vix+ - 6 meses" data-precio="40000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://www.liderlogo.es/wp-content/uploads/2022/12/pasted-image-0-4.png" alt="Spotify Premium">
                 <h3>Spotify Premium</h3>
                 <p>3 meses - Música sin anuncios</p>
                 <p>$30,000</p>
                 <button class="btn agregar-pedido" data-servicio="Spotify Premium - 3 meses" data-precio="30000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://static-00.iconduck.com/assets.00/apple-music-icon-256x256-fm1w0jw0.png" alt="Apple Music">
                 <h3>Apple Music</h3>
                 <p>6 meses - Streaming de música</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="Apple Music - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://www.pngall.com/wp-content/uploads/15/Youtube-Music-Logo-PNG-Photos.png" alt="YouTube Music">
                 <h3>YouTube Music</h3>
                 <p>6 meses - Música sin anuncios</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="YouTube Music - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://preview.redd.it/download-custom-tidal-icons-for-android-macos-and-windows-v0-b0wm36s4bcuc1.png?width=640&crop=smart&auto=webp&s=1142abe2196c3ce117a8ad79b34f72908ea160cf" alt="Tidal">
                 <h3>Tidal</h3>
                 <p>6 meses - Música HiFi</p>
                 <p>$60,000</p>
                 <button class="btn agregar-pedido" data-servicio="Tidal - 6 meses" data-precio="60000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://logos-world.net/wp-content/uploads/2021/03/Deezer-Emblem.jpg" alt="Deezer">
                 <h3>Deezer</h3>
                 <p>6 meses - Música Premium</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="Deezer - 6 meses" data-precio="50000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="streaming de música">
                 <img src="https://img.icons8.com/ios_filled/512/amazon-music.png" alt="Amazon Music Unlimited">
                 <h3>Amazon Music Unlimited</h3>
                 <p>6 meses - Música ilimitada</p>
                 <p>$60,000</p>
                 <button class="btn agregar-pedido" data-servicio="Amazon Music Unlimited - 6 meses" data-precio="60000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="herramientas premium">
                 <img src="https://5.imimg.com/data5/SELLER/Default/2025/1/483342275/ZM/IJ/RO/233734855/canva-pro-lifetime-access-selar-co-65b6705f9cd19-jpeg-500x500.jpeg" alt="Canva Pro">
                 <h3>Canva Pro</h3>
                 <p>1 año - Herramientas Premium</p>
                 <p>$120,000</p>
                 <button class="btn agregar-pedido" data-servicio="Canva Pro - 1 año" data-precio="120000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="vpn">
                 <img src="https://www.cnet.com/a/img/resize/fc23e5cb94634e1e51115395bad5378819ffd791/hub/2020/02/19/b5effba0-e028-4779-bc5a-66e9c91b1a09/screen-shot-2020-02-19-at-1-32-48-pm.png?auto=webp&fit=crop&height=362&width=644" alt="NordVPN">
                 <h3>NordVPN</h3>
                 <p>1 año - VPN Premium</p>
                 <p>$90,000</p>
                 <button class="btn agregar-pedido" data-servicio="NordVPN - 1 año" data-precio="90000">Agregar al pedido</button>
             </div>
-
-            <div class="card">
+            
+            <div class="card" data-categoria="inteligencia artificial">
                 <img src="https://beecrowd.com/wp-content/uploads/2024/04/2023-05-19-Chat-GPT.jpg" alt="ChatGPT Plus">
                 <h3>ChatGPT Plus</h3>
                 <p>1 mes - Acceso GPT-4</p>
                 <p>$50,000</p>
                 <button class="btn agregar-pedido" data-servicio="ChatGPT Plus - 1 mes" data-precio="50000">Agregar al pedido</button>
-            </div>
-        </div>
+            </div>        </div>
     </section>
+</div>
+
     <div class="pedido-flotante oculto" id="pedido-flotante">
         <h2>Tu Pedido (<span id="contador-flotante">0</span> servicios)</h2>
         <ul id="lista-pedido-flotante"></ul>
@@ -487,6 +678,31 @@
         #mostrar-pedido-btn:hover {
             background-color: #00acc1;
         }
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(0,188,212,0.05), transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(0,188,212,0.05), transparent 40%);
+    animation: fondoAnimado 10s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes fondoAnimado {
+    0% {
+        background-position: 30% 30%, 70% 70%;
+    }
+    50% {
+        background-position: 35% 35%, 65% 65%;
+    }
+    100% {
+        background-position: 30% 30%, 70% 70%;
+    }
+}
+
         .whatsapp-float {
     position: fixed;
     width: 60px;
@@ -518,6 +734,7 @@
     transform: scale(1);
   }
 }
+
 
     </style>
 <a href="https://wa.me/573205056348" 
@@ -603,7 +820,63 @@ title="Chatea con nosotros en WhatsApp">
 
         // Ocultar el pedido flotante inicialmente
         pedidoFlotante.classList.add('oculto');
-        
+    
+    
     </script>
+    <script>
+        const cards = Array.from(document.querySelectorAll('.card'));
+        const buscarInput = document.getElementById('buscar-producto');
+        const precioMinInput = document.getElementById('precio-min');
+        const precioMaxInput = document.getElementById('precio-max');
+        const precioMinValSpan = document.getElementById('precio-min-val');
+        const precioMaxValSpan = document.getElementById('precio-max-val');
+        const categoriaCheckboxes = document.querySelectorAll('input[name="categoria"]');
+    
+        function actualizarRangoPrecio() {
+            precioMinValSpan.textContent = precioMinInput.value.toLocaleString();
+            precioMaxValSpan.textContent = precioMaxInput.value.toLocaleString();
+            filtrarCatalogo();
+        }
+    
+        function filtrarCatalogo() {
+    const textoBusqueda = buscarInput.value.toLowerCase();
+    const precioMin = parseInt(precioMinInput.value);
+    const precioMax = parseInt(precioMaxInput.value);
+    const categoriasSeleccionadas = Array.from(categoriaCheckboxes)
+        .filter(checkbox => checkbox.checked && checkbox.value !== 'Todas')
+        .map(checkbox => checkbox.value.toLowerCase());
+
+    cards.forEach(card => {
+        const titulo = card.querySelector('h3').textContent.toLowerCase();
+        const precioTexto = card.querySelector('p:nth-child(3)').textContent;
+        const precio = parseInt(precioTexto.replace('$', '').replace(',', ''));
+        const categoriaCard = card.dataset.categoria ? card.dataset.categoria.toLowerCase() : '';
+        const categoriasArray = categoriaCard.split(' '); // Si hay múltiples categorías separadas por espacio
+
+        const textoCoincide = textoBusqueda === '' || titulo.includes(textoBusqueda);
+        const precioDentroRango = precio >= precioMin && precio <= precioMax;
+        const categoriaCoincide = categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.some(cat => categoriasArray.includes(cat));
+
+        if (textoCoincide && precioDentroRango && categoriaCoincide) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Lógica para "Todas las Cuentas" (sin cambios)
+    const todasCheckbox = Array.from(categoriaCheckboxes).find(cb => cb.value === 'Todas');
+    if (todasCheckbox && todasCheckbox.checked) {
+        categoriaCheckboxes.forEach(cb => {
+            if (cb.value !== 'Todas') {
+                cb.checked = false;
+            }
+        });
+    } else if (categoriasSeleccionadas.length > 0) {
+        if (todasCheckbox) {
+            todasCheckbox.checked = false;
+        }
+    }
+}    </script>
     </body>
 </html>
