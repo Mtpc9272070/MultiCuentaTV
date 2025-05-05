@@ -10,6 +10,16 @@
 
 <body>
   <header>
+    <div id="loader">
+        <div class="loader-inner"></div>
+      </div>
+      <div id="anuncio-overlay">
+        <div id="anuncio-box">
+          <button id="cerrar-anuncio">&times;</button>
+          <img src="disney+.png" alt="Anuncio"> <!-- Reemplaza con tu imagen personalizada -->
+        </div>
+      </div>
+      
       <div class="logo">
           <img src="8f4044de-6e0c-49a5-a5f8-7d0617d1529f.png" alt="Multicuenta TV">
       </div>
@@ -37,27 +47,27 @@
             <div class="card">
               <img src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="Netflix">
               <h3>Netflix Premium</h3>
-              <p>6 meses - HD/4K</p>
-              <p>$50,000</p>
-              <button class="btn agregar" data-servicio="Netflix Premium - 6 meses" data-precio="50000">Agregar al pedido</button>
+              <p>1 mes - HD/4K</p>
+              <p>$8,000</p>
+              <button class="btn agregar" data-servicio="Netflix Premium - 6 meses" data-precio="8000">Agregar al pedido</button>
           </div>
   
           <!-- Disney+ -->
           <div class="card">
               <img src="https://img.icons8.com/?size=512&id=rrtOAHJcHL38&format=png" alt="Disney+">
               <h3>Disney+</h3>
-              <p>1 año - Full HD</p>
-              <p>$80,000</p>
-              <button class="btn agregar" data-servicio="Disney+ - 1 año" data-precio="80000">Agregar al pedido</button>
+              <p>1 mes - Full HD</p>
+              <p>$6,000</p>
+              <button class="btn agregar" data-servicio="Disney+ - 1 año" data-precio="6000">Agregar al pedido</button>
           </div>
   
           <!-- HBO Max -->
           <div class="card">
               <img src="https://img.icons8.com/ios_filled/512/FFFFFF/hbo-max.png" alt="HBO Max">
               <h3>HBO Max</h3>
-              <p>6 meses - HD</p>
-              <p>$60,000</p>
-              <button class="btn agregar" data-servicio="HBO Max - 6 meses" data-precio="60000">Agregar al pedido</button>
+              <p>1 meses - HD</p>
+              <p>$6,000</p>
+              <button class="btn agregar" data-servicio="HBO Max - 6 meses" data-precio="6000">Agregar al pedido</button>
           </div>
   
           <!-- Amazon Prime Video -->
@@ -65,8 +75,8 @@
               <img src="https://cdn.lovesavingsgroup.com/logos/amazon-prime.png" alt="Amazon Prime Video">
               <h3>Amazon Prime Video</h3>
               <p>1 año - Full HD + Envíos Amazon</p>
-              <p>$90,000</p>
-              <button class="btn agregar" data-servicio="Amazon Prime Video - 1 año" data-precio="90000">Agregar al pedido</button>
+              <p>$6,000</p>
+              <button class="btn agregar" data-servicio="Amazon Prime Video - 1 año" data-precio="6000">Agregar al pedido</button>
           </div>
   
           <!-- Star+ -->
@@ -74,8 +84,8 @@
               <img src="https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/38C8365C78E21868AF1119E600F78996BBB5AED18C9925C10E45E4F3D8561F81/compose?aspectRatio=1.78&format=webp&width=600" alt="Star+">
               <h3>Star+</h3>
               <p>6 meses - Deportes + Series</p>
-              <p>$60,000</p>
-              <button class="btn agregar" data-servicio="Star+ - 6 meses" data-precio="60000">Agregar al pedido</button>
+              <p>$6,000</p>
+              <button class="btn agregar" data-servicio="Star+ - 6 meses" data-precio="6000">Agregar al pedido</button>
           </div>
   
           <!-- Paramount+ -->
@@ -186,6 +196,16 @@
        style="width: 60px; height: 60px;">
 </a>
 <script>
+     window.addEventListener('load', () => {
+    // Oculta el loader y muestra el anuncio
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('anuncio-overlay').style.display = 'flex';
+  });
+
+  document.getElementById('cerrar-anuncio').addEventListener('click', () => {
+    document.getElementById('anuncio-overlay').style.display = 'none';
+  });
+
 function toggleMenu() {
     var nav = document.getElementById('navMenu');
     if (nav.style.display === 'flex') {
